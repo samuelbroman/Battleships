@@ -21,12 +21,10 @@
             square.dataset.id = i
             grid.appendChild(square)
             squares.push(square)
-            console.log('swag')
         }
     }
     Createbattlefield(playergrid, playersquares)
     Createbattlefield(computergrid, comuptersquares)
-    console.log('swag')
 const shipsarray = [
     {
     name: 's2', location2: [0, 1]
