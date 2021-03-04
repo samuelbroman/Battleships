@@ -16,7 +16,7 @@
     const comuptersquares = []
 
     function Createbattlefield(grid, squares) {
-        for (let i = 0; i < 100; i++){
+        for (let i = 0; i < 80; i++){
             const square = document.createElement('div')
             square.dataset.id = i
             grid.appendChild(square)
@@ -31,19 +31,229 @@ const shipsarray = [
     },
     {
         name: 's3n1', location3n1: [0, 1, 2]
+    },
+    {
+        name: 's3n2', location3n2: [0, 1, 2]
+    },
+    {
+        name: 's4', location4: [0, 1, 2, 3]
+    },
+    {
+        name: 's5', location5: [0, 1, 2, 3, 4]
     }
 
 ]
-
-    const size2random = Math.floor(Math.random(99))
-    if (size2random >= 9 || size2random >= 19 || size2random >= 29 || size2random >= 39 || size2random >= 49 || size2random >= 59 || size2random >= 69 || size2random >= 79 || size2random >= 89 || size2random >= 99)
+randomtaken = []
+for(let i = 0; i < 5; i++)
+{
+    while(true)
     {
-        location2[0] = size2random - 1
-        location2[1] = size2random
+        const cornercheck = false
+        const x = 0
+        const random = Math.floor(Math.random(79))
+        if (i == 0)
+        {
+            while (x < 72)
+            {
+                if (random > x + 7 && random < x + 8 )
+                {
+                    location2[0] = random - 1
+                    location2[1] = random
+                    randomtaken[0] = location2[0]
+                    randomtaken[1] = location2[1]
+                    x = 100;
+                    cornercheck = true
+                }
+            }
+                if (cornercheck == false)
+                {
+                    location2[0] = random
+                    location2[1] = random + 1
+                    randomtaken[0] = location2[0]
+                    randomtaken[1] = location2[1]
+                    break;
+                }
+                else
+                {
+                    break;
+                }
+        }
+        else if (i == 1)
+        {
+            for (let i = 0; i < 2; i++)
+            {
+                if (random == randomtaken[i])
+                {
+                    random = Math.floor(Math.random(79))
+                    i = 0;
+                }
+            }
+                while (x < 72)
+                {
+                    if (random > x + 6 && random < x + 8 )
+                    {
+                        location3n1[0] = random - 2
+                        location3n1[1] = random - 1
+                        location3n1[2] = random
+                        randomtaken[2] = location3n1[0]
+                        randomtaken[3] = location3n1[1]
+                        randomtaken[4] = location3n1[2]    
+                        x = 100;
+                        cornercheck = true
+                    }
+                }
+                if (cornercheck == false)
+                {
+                    location3n1[0] = random
+                    location3n1[1] = random + 1
+                    location3n1[2] = random + 2
+                    randomtaken[2] = location3n1[0]
+                    randomtaken[3] = location3n1[1]
+                    randomtaken[4] = location3n1[2]  
+                    break;
+                }
+                else
+                {
+                    break;
+                }
+            
+        }
+        else if (i == 2)
+        {
+            for (let i = 0; i < 5; i++)
+            {
+                if (random == randomtaken[i])
+                {
+                    random = Math.floor(Math.random(79))
+                    i = 0;
+                }
+            }
+                while (x < 72)
+                {
+                    if (random > x + 6 && random < x + 8 )
+                    {
+                        location3n2[0] = random - 2
+                        location3n2[1] = random - 1
+                        location3n2[2] = random 
+                        randomtaken[5] = location3n2[0]
+                        randomtaken[6] = location3n2[1]
+                        randomtaken[7] = location3n2[2]   
+                        x = 100;
+                        cornercheck = true
+                    }
+                    x += 8
+                }
+                if (cornercheck == false)
+                {
+                    location3n2[0] = random
+                    location3n2[1] = random + 1
+                    location3n2[2] = random + 2
+                    randomtaken[5] = location3n2[0]
+                    randomtaken[6] = location3n2[1]
+                    randomtaken[7] = location3n2[2]
+                    break;
+                }
+                else
+                {
+                    break;
+                }
+            
+        }
+        
+        else if (i == 3)
+        {
+            for (let i = 0; i < 8; i++)
+            {
+                if (random == randomtaken[i])
+                {
+                    random = Math.floor(Math.random(79))
+                    i = 0;
+                }
+            }
+                while (x < 72)
+                {
+                    if (random > x + 5 && random < x + 8 )
+                    {
+                        location4[0] = random - 3
+                        location4[1] = random - 2
+                        location4[2] = random - 1
+                        location4[3] = random 
+                        randomtaken[8] = location4[0]
+                        randomtaken[9] = location4[1]
+                        randomtaken[10] = location4[2]
+                        randomtaken[11] = location4[3]   
+                        x = 100;
+                        cornercheck = true
+                    }
+                    x += 8
+                }
+                if (cornercheck == false)
+                {
+                    location4[0] = random
+                    location4[1] = random + 1
+                    location4[2] = random + 2
+                    location4[3] = random + 3
+                    randomtaken[8] = location4[0]
+                    randomtaken[9] = location4[1]
+                    randomtaken[10] = location4[2]
+                    randomtaken[11] = location4[3] 
+                    break;
+                }
+                else
+                {
+                    break;
+                }
+            
+        }
+        else if (i == 4)
+        {
+            for (let i = 0; i < 12; i++)
+            {
+                if (random == randomtaken[i])
+                {
+                    random = Math.floor(Math.random(79))
+                    i = 0;
+                }
+            }
+                while (x < 72)
+                {
+                    if (random > x + 4 && random < x + 8 )
+                    {
+                        location5[0] = random - 4
+                        location5[1] = random - 3
+                        location5[2] = random - 2
+                        location5[3] = random - 1
+                        location5[4] = random 
+                        x = 100;
+                        cornercheck = true
+                    }
+                    x += 8
+                }
+                if (cornercheck == false)
+                {
+                    location5[0] = random
+                    location5[1] = random + 1
+                    location5[2] = random + 2
+                    location5[3] = random + 3
+                    location5[4] = random + 4
+                    break;
+                }
+                else
+                {
+                    break;
+                }
+            
+        
+        }
+        else
+        {
+            break;
+        }
     }
-    else{
-        location2[0] = size2random
-        location2[1] = size2random + 1
-    }
+}
+        
+    
+    
+    
 
 //})
