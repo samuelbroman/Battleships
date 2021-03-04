@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battleships</title>
-    <link rel="styleshet" href="style.css">
-    <script src="java.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
@@ -18,6 +17,35 @@
         <h3 id="turn">Your turn</h3>
         <h3 id="combatlog"></h3>
     </div>
-    <div class="battlefield"></div>
+    <div class="grid-inventory">
+        <div class="ship size2-container" draggable="true">
+            <div id="size2-1"></div>
+            <div id="size2-2"></div>
+        </div>
+        <div class="ship size3n1-container" draggable="true">
+            <div id="size3n1-1"></div>
+            <div id="size3n1-2"></div>
+            <div id="size3n1-3"></div>
+        </div>
+        <div class="ship size3n2-container" draggable="true">
+            <div id="size3n2-1"></div>
+            <div id="size3n2-2"></div>
+            <div id="size3n2-3"></div>
+        </div>
+        <div class="ship size4-container" draggable="true">
+            <div id="size4-1"></div>
+            <div id="size4-2"></div>
+            <div id="size4-3"></div>
+            <div id="size4-4"></div>
+        </div>
+        <div class="ship size5-container" draggable="true">
+            <div id="size5-1"></div>
+            <div id="size5-2"></div>
+            <div id="size5-3"></div>
+            <div id="size5-4"></div>
+            <div id="size5-5"></div>
+        </div>
+    </div>
 </body>
+<script src="index.js"></script>
 </html>

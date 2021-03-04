@@ -1,10 +1,8 @@
-.grid div{
-width: 50px;
-height: 50px;
-background-color: black;
+
+
+.container{
+    display:flex;
 }
-
-
 
 .grid-user{
     width: 500px;
@@ -12,4 +10,71 @@ background-color: black;
     background-color: aqua;
     display: flex;
     flex-wrap: wrap;
+    margin: 20px;
+}
+
+.grid div{
+    width: 50px;
+    height: 50px;
+}
+
+.grid-computer{
+    width: 500px;
+    height: 500px;
+    background-color: blue;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.grid-inventory{
+    width: 300px;
+    height: 500px;
+    margin: 20px;
+    background-color: red;
+}
+
+.ship div{
+    width: 50px;
+    height: 50px;
+}
+
+.size2-container{
+    width: 100px;
+    height: 50px;
+    margin: 10px;
+    background-color: gray;
+    display:flex;
+}
+
+.size3n1-container{
+    width: 150px;
+    height: 50px;
+    margin: 10px;
+    background-color: gray;
+    display:flex;
+}
+
+.size3n2-container{
+    width: 150px;
+    height: 50px;
+    margin: 10px;
+    background-color: gray;
+    display:flex;
+}
+
+.size4-container{
+    width: 200px;
+    height: 50px;
+    margin: 10px;
+    background-color: gray;
+    display:flex;
+}
+
+.size5-container{
+    width: 250px;
+    height: 50px;
+    margin: 10px;
+    background-color: gray;
+    display:flex;
 }
