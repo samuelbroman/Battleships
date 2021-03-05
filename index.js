@@ -14,14 +14,13 @@
     const width = 10
     const playersquares = []
     const comuptersquares = []
-    const location2 = []
-    const location3n1 = []
-    const location3n2 = []
-    const location4 = []
-    const location5 = []
-    location2[0] = document.querySelector('size2-1')
-    location2[1] = document.querySelector('size2-2')
-    /*location3n1[0] = document.querySelector('size3n1-1')
+    var location2 = []
+    var location3n1 = []
+    var location3n2 = []
+    var location4 = []
+    var location5 = []
+    /*location2[1] = document.querySelector('size2-2')
+    location3n1[0] = document.querySelector('size3n1-1')
     location3n1[1] = document.querySelector('size3n1-2')
     location3n1[2] = document.querySelector('size3n1-3')
     location3n2[0] = document.querySelector('size3n2-1')
@@ -37,16 +36,16 @@
     location5[3] = document.querySelector('size5-4')
     location5[4] = document.querySelector('size5-5')*/
 
-    function Createbattlefield(grid, squares) {
-        for (let i = 0; i < 80; i++){
+    function Createbattlefield(grid, squares, prefix) {
+        for (let i = 0; i < 100; i++){
             const square = document.createElement('div')
-            square.dataset.id = i
+            square.id = prefix + i
             grid.appendChild(square)
             squares.push(square)
         }
     }
-    Createbattlefield(playergrid, playersquares)
-    Createbattlefield(computergrid, comuptersquares)
+    Createbattlefield(playergrid, playersquares, "player")
+    Createbattlefield(computergrid, comuptersquares, "computer")
 /*const shipsarray = [
     {
     name: 's2', location2: [0, 1]
@@ -68,123 +67,134 @@
 randomtaken = []
 for(let i = 0; i < 5; i++)
 {
-    while(true)
-    {
+    //while(true)
+    //{
         var cornercheck = false
         var x = 0
-        var random = Math.floor(Math.random(79))
+        var random = Math.floor(Math.random() * 100)
         if (i == 0)
         {
-            while (x < 72)
+            while (x < 100)
             {
-                if (random > x + 7 && random < x + 8 )
+                if (random > x + 8 && random < x + 10)
                 {
-                    location2[0] = random - 1
-                    location2[1] = random
-                    randomtaken[0] = location2[0]
-                    randomtaken[1] = location2[1]
+                    //location2[0] = random - 1
+                    location2[0] = document.getElementById('computer' + (random - 1))
+                    location2[0].classList.add('s2')
+                    location2[1] = document.getElementById('computer' + random)
+                    location2[1].classList.add('s2')
+                    randomtaken[0] = random 
+                    randomtaken[1] = random - 1
+                    console.log(random)
                     //classList.add('s2')
                     x = 100;
                     cornercheck = true
                 }
-                x += 8
+                x += 10
             }
                 if (cornercheck == false)
                 {
-                    location2[0] = random
-                    location2[1] = random + 1
-                    randomtaken[0] = location2[0]
-                    randomtaken[1] = location2[1]
+                    location2[0] = document.getElementById('computer' + random)
+                    location2[0].classList.add('s2')
+                    location2[1] = document.getElementById('computer' + (random + 1))
+                    location2[1].classList.add('s2')
+                    randomtaken[0] = random + 1
+                    randomtaken[1] = random
                     //classList.add('s2')
-                    break;
+                    console.log(random)
                 }
                 else
                 {
-                    break;
                 }
         }
         else if (i == 1)
         {
             for (let y = 0; y < 2; y++)
             {
-                if (random == randomtaken[y])
+                if (random == randomtaken[y] || (random <= randomtaken[y] && random >= (randomtaken[y] - 2)) ||( random >= randomtaken[y] && random <= (randomtaken[y] + 2)))
                 {
-                    random = Math.floor(Math.random(79))
+                    random = Math.floor(Math.random()*100)
                     y = 0;
                 }
             }
-                while (x < 72)
+                while (x < 100)
                 {
-                    if (random > x + 6 && random < x + 8 )
+                    if (random > x + 7 && random < x + 10 )
                     {
-                        location3n1[0] = random - 2
-                        location3n1[1] = random - 1
-                        location3n1[2] = random
-                        randomtaken[2] = location3n1[0]
-                        randomtaken[3] = location3n1[1]
-                        randomtaken[4] = location3n1[2]
+                        location3n1[0] = document.getElementById('computer' + (random - 2))
+                        location3n1[0].classList.add('s3n1')
+                        location3n1[1] = document.getElementById('computer' + (random - 1))
+                        location3n1[1].classList.add('s3n1')
+                        location3n1[2] = document.getElementById('computer' + random)
+                        location3n1[2].classList.add('s3n1')
+                        randomtaken[5] = random
+                        randomtaken[6] = random - 1
+                        randomtaken[7] = random - 2
                         //classList.add('s3n1')    
                         x = 100;
                         cornercheck = true
+                        console.log(random)
                     }
-                    x += 8
+                    x += 10
                 }
                 if (cornercheck == false)
                 {
-                    location3n1[0] = random
-                    location3n1[1] = random + 1
-                    location3n1[2] = random + 2
-                    randomtaken[2] = location3n1[0]
-                    randomtaken[3] = location3n1[1]
-                    randomtaken[4] = location3n1[2]
+                    location3n1[0] = document.getElementById('computer' + random)
+                    location3n1[0].classList.add('s3n1')
+                    location3n1[1] = document.getElementById('computer' + (random + 1))
+                    location3n1[1].classList.add('s3n1')
+                    location3n1[2] = document.getElementById('computer' + (random + 2))
+                    location3n1[2].classList.add('s3n1')
+                    randomtaken[5] = random
+                    randomtaken[6] = random + 1
+                    randomtaken[7] = random + 2
+                    console.log(random)
                     //classList.add('s3n1')  
-                    break;
-                }
-                else
-                {
-                    break;
                 }
         }
         else if (i == 2)
         {
             for (let y = 0; y < 5; y++)
             {
-                if (random == randomtaken[y])
+                if (random == randomtaken[y] || (random <= randomtaken[y] && random >= (randomtaken[y] - 2)) || (random >= randomtaken[y] && (random <= randomtaken[y] + 2)))
                 {
-                    random = Math.floor(Math.random(79))
+                    random = Math.floor(Math.random()*100)
                     y = 0;
                 }
             }
-                while (x < 72)
+                while (x < 100)
                 {
-                    if (random > x + 6 && random < x + 8 )
+                    if (random > x + 7 && random < x + 10 )
                     {
-                        location3n2[0] = random - 2
-                        location3n2[1] = random - 1
-                        location3n2[2] = random 
-                        randomtaken[5] = location3n2[0]
-                        randomtaken[6] = location3n2[1]
-                        randomtaken[7] = location3n2[2]
+                        location3n1[0] = document.getElementById('computer' + (random - 2))
+                        location3n1[0].classList.add('s3n2')
+                        location3n1[1] = document.getElementById('computer' + (random - 1))
+                        location3n1[1].classList.add('s3n2')
+                        location3n1[2] = document.getElementById('computer' + random)
+                        location3n1[2].classList.add('s3n2')
+                        randomtaken[5] = random
+                        randomtaken[6] = random - 1
+                        randomtaken[7] = random - 2
+                        console.log(random)
                         //classList.add('s3n2')   
                         x = 100;
                         cornercheck = true
                     }
-                    x += 8
+                    x += 10
                 }
                 if (cornercheck == false)
                 {
-                    location3n2[0] = random
-                    location3n2[1] = random + 1
-                    location3n2[2] = random + 2
-                    randomtaken[5] = location3n2[0]
-                    randomtaken[6] = location3n2[1]
-                    randomtaken[7] = location3n2[2]
+                    location3n1[0] = document.getElementById('computer' + random)
+                    location3n1[0].classList.add('s3n2')
+                    location3n1[1] = document.getElementById('computer' + (random + 1))
+                    location3n1[1].classList.add('s3n2')
+                    location3n1[2] = document.getElementById('computer' + (random + 2))
+                    location3n1[2].classList.add('s3n2')
+                    randomtaken[5] = random
+                    randomtaken[6] = random + 1
+                    randomtaken[7] = random + 2
+                    console.log(random)
                     //classList.add('s3n2')
-                    break;
-                }
-                else
-                {
-                    break;
                 }
             
         }
@@ -193,96 +203,103 @@ for(let i = 0; i < 5; i++)
         {
             for (let y = 0; y < 8; y++)
             {
-                if (random == randomtaken[y])
+                if (random == randomtaken[y] || (random <= randomtaken[y] && random >= (randomtaken[y] - 3)) || (random >= randomtaken[y] && random <= (randomtaken[y] + 3)))
                 {
-                    random = Math.floor(Math.random(79))
+                    random = Math.floor(Math.random()*100)
                     y = 0;
                 }
             }
-                while (x < 72)
+                while (x < 100)
                 {
-                    if (random > x + 5 && random < x + 8 )
+                    if (random > x + 6 && random < x + 10 )
                     {
-                        location4[0] = random - 3
-                        location4[1] = random - 2
-                        location4[2] = random - 1
-                        location4[3] = random 
-                        randomtaken[8] = location4[0]
-                        randomtaken[9] = location4[1]
-                        randomtaken[10] = location4[2]
-                        randomtaken[11] = location4[3]
+                        location4[0] = document.getElementById('computer' + (random - 3))
+                        location4[0].classList.add('s4')
+                        location4[1] = document.getElementById('computer' + (random - 2))
+                        location4[1].classList.add('s4')
+                        location4[2] = document.getElementById('computer' + (random - 1))
+                        location4[2].classList.add('s4')
+                        location4[3] = document.getElementById('computer' + random)
+                        location4[3].classList.add('s4') 
+                        randomtaken[8] = random 
+                        randomtaken[9] = random - 1
+                        randomtaken[10] = random - 2
+                        randomtaken[11] = random - 3
+                        console.log(random)
                         //classList.add('s4')   
                         x = 100;
                         cornercheck = true
                     }
-                    x += 8
+                    x += 10
                 }
                 if (cornercheck == false)
                 {
-                    location4[0] = random
-                    location4[1] = random + 1
-                    location4[2] = random + 2
-                    location4[3] = random + 3
-                    randomtaken[8] = location4[0]
-                    randomtaken[9] = location4[1]
-                    randomtaken[10] = location4[2]
-                    randomtaken[11] = location4[3]
-                    //classList.add('s4') 
-                    break;
-                }
-                else
-                {
-                    break;
-                }
-            
+                    location4[0] = document.getElementById('computer' + random)
+                    location4[0].classList.add('s4')
+                    location4[1] = document.getElementById('computer' + (random + 1))
+                    location4[1].classList.add('s4')
+                    location4[2] = document.getElementById('computer' + (random + 2))
+                    location4[2].classList.add('s4')
+                    location4[3] = document.getElementById('computer' + (random + 3))
+                    location4[3].classList.add('s4') 
+                    randomtaken[8] = random 
+                    randomtaken[9] = random + 1
+                    randomtaken[10] = random + 2
+                    randomtaken[11] = random + 3
+                    console.log(random)
+                    //classList.add('s4')
+                }            
         }
         else if (i == 4)
         {
             for (let y = 0; y < 12; y++)
             {
-                if (random == randomtaken[y])
+                if (random == randomtaken[y] || (random <= randomtaken[y] && random >= (randomtaken[y] - 4) )|| (random >= randomtaken[y] && random == (randomtaken[y] + 4)))
                 {
-                    random = Math.floor(Math.random(79))
+                    random = Math.floor(Math.random()*100)
                     y = 0;
                 }
             }
-                while (x < 72)
+                while (x < 100)
                 {
-                    if (random > x + 4 && random < x + 8 )
+                    if (random > x + 5 && random < x + 10 )
                     {
-                        location5[0] = random - 4
-                        location5[1] = random - 3
-                        location5[2] = random - 2
-                        location5[3] = random - 1
-                        location5[4] = random 
+                        location5[0] = document.getElementById('computer' + (random - 4))
+                        location5[0].classList.add('s5')
+                        location5[1] = document.getElementById('computer' + (random - 3))
+                        location5[1].classList.add('s5')
+                        location5[2] = document.getElementById('computer' + (random - 2))
+                        location5[2].classList.add('s5')
+                        location5[3] = document.getElementById('computer' + (random - 1))
+                        location5[3].classList.add('s5')
+                        location5[4] = document.getElementById('computer' + random)
+                        location5[4].classList.add('s5')
+                        console.log(random)
                         //classList.add('s5')
                         x = 100;
                         cornercheck = true
                     }
-                    x += 8
+                    x += 10
                 }
                 if (cornercheck == false)
                 {
-                    location5[0] = random
-                    location5[1] = random + 1
-                    location5[2] = random + 2
-                    location5[3] = random + 3
-                    location5[4] = random + 4
+                    location5[0] = document.getElementById('computer' + random)
+                    location5[0].classList.add('s5')
+                    location5[1] = document.getElementById('computer' + (random + 1))
+                    location5[1].classList.add('s5')
+                    location5[2] = document.getElementById('computer' + (random + 2))
+                    location5[2].classList.add('s5')
+                    location5[3] = document.getElementById('computer' + (random + 3))
+                    location5[3].classList.add('s5')
+                    location5[4] = document.getElementById('computer' + (random + 4))
+                    location5[4].classList.add('s5')
+                    console.log(random)
                     //classList.add('size5computer')
-                    break;
-                }
-                else
-                {
-                    break;
                 }
             
         
         }
-        else
-        {
-            break;
-        }
-    }
+    //}
 }
         
     

@@ -5,8 +5,10 @@
 }
 
 .grid-user{
-    width: 500px;
-    height: 500px;
+    min-width: 500px;
+    min-height: 500px;
+    max-width: 500px;
+    max-height: 500px;
     background-color: aqua;
     display: flex;
     flex-wrap: wrap;
@@ -19,8 +21,10 @@
 }
 
 .grid-computer{
-    width: 500px;
-    height: 500px;
+    min-width: 500px;
+    min-height: 500px;
+    max-width: 500px;
+    max-height: 500px;
     background-color: blue;
     display: flex;
     flex-wrap: wrap;
@@ -81,4 +85,20 @@
 
 .s2{
     background-color: orange;
+}
+
+.s3n1{
+    background-color: brown;
+}
+
+.s3n2{
+    background-color: blueviolet;
+}
+
+.s4{
+    background-color: black;
+}
+
+.s5{
+    background-color: gray;
 }
