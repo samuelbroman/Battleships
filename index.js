@@ -111,7 +111,7 @@ for(let i = 0; i < 5; i++)
         {
             for (let y = 0; y < 2; y++)
             {
-                if (random == randomtaken[y] || (random <= randomtaken[y] && random >= (randomtaken[y] - 2)) ||( random >= randomtaken[y] && random <= (randomtaken[y] + 2)))
+                if (random == randomtaken[y] || (random > randomtaken[y] - 4 && random < randomtaken[y] + 4))
                 {
                     random = Math.floor(Math.random()*100)
                     y = 0;
@@ -127,9 +127,9 @@ for(let i = 0; i < 5; i++)
                         location3n1[1].classList.add('s3n1')
                         location3n1[2] = document.getElementById('computer' + random)
                         location3n1[2].classList.add('s3n1')
-                        randomtaken[5] = random
-                        randomtaken[6] = random - 1
-                        randomtaken[7] = random - 2
+                        randomtaken[2] = random
+                        randomtaken[3] = random - 1
+                        randomtaken[4] = random - 2
                         //classList.add('s3n1')    
                         x = 100;
                         cornercheck = true
@@ -145,9 +145,9 @@ for(let i = 0; i < 5; i++)
                     location3n1[1].classList.add('s3n1')
                     location3n1[2] = document.getElementById('computer' + (random + 2))
                     location3n1[2].classList.add('s3n1')
-                    randomtaken[5] = random
-                    randomtaken[6] = random + 1
-                    randomtaken[7] = random + 2
+                    randomtaken[2] = random
+                    randomtaken[3] = random + 1
+                    randomtaken[4] = random + 2
                     console.log(random)
                     //classList.add('s3n1')  
                 }
@@ -156,7 +156,7 @@ for(let i = 0; i < 5; i++)
         {
             for (let y = 0; y < 5; y++)
             {
-                if (random == randomtaken[y] || (random <= randomtaken[y] && random >= (randomtaken[y] - 2)) || (random >= randomtaken[y] && (random <= randomtaken[y] + 2)))
+                if (random == randomtaken[y] || (random > randomtaken[y] - 4 && random < randomtaken[y] + 4))
                 {
                     random = Math.floor(Math.random()*100)
                     y = 0;
@@ -203,7 +203,7 @@ for(let i = 0; i < 5; i++)
         {
             for (let y = 0; y < 8; y++)
             {
-                if (random == randomtaken[y] || (random <= randomtaken[y] && random >= (randomtaken[y] - 3)) || (random >= randomtaken[y] && random <= (randomtaken[y] + 3)))
+                if (random == randomtaken[y] || (random > randomtaken[y] - 5 && random < randomtaken[y] + 5))
                 {
                     random = Math.floor(Math.random()*100)
                     y = 0;
@@ -254,7 +254,7 @@ for(let i = 0; i < 5; i++)
         {
             for (let y = 0; y < 12; y++)
             {
-                if (random == randomtaken[y] || (random <= randomtaken[y] && random >= (randomtaken[y] - 4) )|| (random >= randomtaken[y] && random == (randomtaken[y] + 4)))
+                if (random == randomtaken[y] || (random > randomtaken[y] - 6 && random < randomtaken[y] + 6))
                 {
                     random = Math.floor(Math.random()*100)
                     y = 0;
@@ -301,9 +301,52 @@ for(let i = 0; i < 5; i++)
         }
     //}
 }
+
+ships.forEach(ship => ship.addEventListener('dragstart', dragstart))
+ships.forEach(ship => ship.addEventListener('dragover', dragover))
+ships.forEach(ship => ship.addEventListener('dragenter', dragenter))
+ships.forEach(ship => ship.addEventListener('dragleave', dragleave))
+ships.forEach(ship => ship.addEventListener('drop', drop))
+ships.forEach(ship => ship.addEventListener('dragend', dragend))
+
+ships.forEach(ship => ship.addEventListener('mousedown', (e) =>{
+    selectedship = e.target.id
+}))
+
+function dragstart(e){
+    pickedship = this
+    pickedshipsize = this.childNodes.length
+}
         
+function dragover(e){
+    e.preventDefault()
+}    
     
+function dragenter(e){
+    e.preventDefault()
+}    
+
+function dragleave(){
+
+}
+
+function drop(){
+    let shipchildid = pickedship.lastChild.id
+    let classship = shipchildid.slice(0,-2)
+    let shipside = parseInt(shipchildid.substr(-1))
+    let shipside2 = shipside + parseInt(this.dataset.id)
+    chosenship = parseInt(selectedship.substr(-1))
+    shipside2 -= chosenship
+    for(let i = 0; i < shipsize; i++)
+    {
+        playersquares[parse.Int(this.dataset.id) - chosenship].classlist.add('taken', shipsize)
+    }
+    inventoryGrid.removeChild(pickedship)
+}
+
+function dragend(){
     
-    
+}
+
 
 //})
